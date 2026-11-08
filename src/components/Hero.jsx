@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { ArrowRight, Mail, ChevronDown } from 'lucide-react'
+import { ArrowRight, Mail, ChevronDown, Sparkles, Terminal, Cpu } from 'lucide-react'
 import AICanvas from './AICanvas'
 
 const fadeUp = {
@@ -15,28 +15,46 @@ export default function Hero() {
       id="home"
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
-      {/* Background */}
+      {/* Background gradients */}
       <div className="absolute inset-0 bg-gradient-to-br from-bg-primary via-bg-primary to-bg-secondary" />
-      <div className="absolute top-0 right-0 w-96 h-96 rounded-full bg-accent/4 blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-72 h-72 rounded-full bg-accent/5 blur-3xl pointer-events-none" />
+      <div className="absolute top-1/4 right-10 w-96 h-96 rounded-full bg-accent/5 blur-3xl pointer-events-none" />
+      <div className="absolute bottom-10 left-10 w-80 h-80 rounded-full bg-accent/4 blur-3xl pointer-events-none" />
 
-      {/* Animated node network */}
+      {/* Animated agent node network canvas */}
       <div className="absolute inset-0 opacity-25 pointer-events-none">
         <AICanvas />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-        <div className="grid lg:grid-cols-2 gap-12 items-center min-h-screen py-24">
+        <div className="grid lg:grid-cols-12 gap-12 items-center min-h-screen py-24">
 
-          {/* Left — Text Content */}
+          {/* Left Column — Bio & Highlights */}
           <motion.div
-            className="flex flex-col justify-center"
+            className="lg:col-span-7 flex flex-col justify-center text-left"
             initial="hidden"
             animate="show"
             variants={{ show: { transition: { staggerChildren: 0.14 } } }}
           >
-            {/* Status badge */}
-            <motion.div variants={fadeUp} className="mb-7">
+            {/* Mobile portrait teaser */}
+            <motion.div variants={fadeUp} className="flex lg:hidden items-center gap-4 mb-6">
+              <div className="relative w-16 h-16 rounded-2xl overflow-hidden border-2 border-accent/40 shadow-lg shadow-accent/10">
+                <img
+                  src="/profile.jpg"
+                  alt="Obaid Ullah"
+                  className="w-full h-full object-cover object-top"
+                />
+              </div>
+              <div>
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-accent/30 bg-accent/5 text-accent text-xs font-mono">
+                  <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
+                  Available for Opportunities
+                </span>
+                <p className="text-xs text-text-secondary mt-1 font-mono">Full-Stack &amp; AI</p>
+              </div>
+            </motion.div>
+
+            {/* Desktop Status Badge */}
+            <motion.div variants={fadeUp} className="hidden lg:block mb-6">
               <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-accent/30 bg-accent/5 text-accent text-xs font-medium font-mono">
                 <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
                 Available for Opportunities
@@ -54,7 +72,7 @@ export default function Hero() {
             {/* Name */}
             <motion.h1
               variants={fadeUp}
-              className="text-5xl sm:text-6xl lg:text-7xl font-bold text-text-primary leading-none mb-2"
+              className="text-5xl sm:text-6xl lg:text-7xl font-bold text-text-primary leading-tight mb-2 tracking-tight"
             >
               Obaid
               <span className="block gradient-text">Ullah</span>
@@ -63,16 +81,17 @@ export default function Hero() {
             {/* Title */}
             <motion.p
               variants={fadeUp}
-              className="text-text-secondary text-sm md:text-base font-mono mb-6 mt-1"
+              className="text-text-secondary text-sm md:text-base font-mono mb-6 mt-1 flex items-center gap-2 flex-wrap"
             >
-              Full-Stack Developer{' '}
-              <span className="text-accent">|</span> AI &amp; Agentic AI Enthusiast
+              <span>Full-Stack Developer</span>
+              <span className="text-accent">|</span>
+              <span className="text-text-primary font-medium">AI &amp; Agentic AI Enthusiast</span>
             </motion.p>
 
             {/* Headline */}
             <motion.h2
               variants={fadeUp}
-              className="text-xl md:text-2xl font-semibold text-text-primary mb-5 leading-snug max-w-lg"
+              className="text-xl md:text-2xl font-semibold text-text-primary mb-5 leading-snug max-w-xl"
             >
               Building Intelligent Software for{' '}
               <span className="text-accent">Real-World Problems.</span>
@@ -81,7 +100,7 @@ export default function Hero() {
             {/* Description */}
             <motion.p
               variants={fadeUp}
-              className="text-text-secondary text-sm md:text-base leading-relaxed mb-9 max-w-lg"
+              className="text-text-secondary text-sm md:text-base leading-relaxed mb-8 max-w-xl"
             >
               I&apos;m a passionate software developer focused on building modern web applications,
               exploring Artificial Intelligence, and creating intelligent solutions through Agentic
@@ -89,7 +108,7 @@ export default function Hero() {
               continuously exploring emerging technologies.
             </motion.p>
 
-            {/* CTAs */}
+            {/* Action Buttons */}
             <motion.div variants={fadeUp} className="flex flex-wrap gap-3">
               <button onClick={() => scrollTo('projects')} className="btn-primary">
                 Explore My Work
@@ -119,84 +138,87 @@ export default function Hero() {
             </motion.div>
           </motion.div>
 
-          {/* Right — AI Visual Orb */}
+          {/* Right Column — Professional Portrait & AI Tech Aura */}
           <motion.div
-            className="hidden lg:flex items-center justify-center"
-            initial={{ opacity: 0, scale: 0.85 }}
+            className="hidden lg:flex lg:col-span-5 items-center justify-center relative"
+            initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.9, delay: 0.3, ease: 'easeOut' }}
+            transition={{ duration: 0.8, delay: 0.25, ease: 'easeOut' }}
           >
-            <div className="relative w-80 h-80">
-              {/* Outer ring */}
-              <motion.div
-                className="absolute inset-0 rounded-full border border-accent/15"
-                animate={{ rotate: 360 }}
-                transition={{ duration: 24, repeat: Infinity, ease: 'linear' }}
-              >
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2.5 h-2.5 rounded-full bg-accent shadow-lg shadow-accent/40" />
-              </motion.div>
+            <div className="relative w-full max-w-sm">
 
-              {/* Middle ring */}
-              <motion.div
-                className="absolute inset-10 rounded-full border border-accent/10"
-                animate={{ rotate: -360 }}
-                transition={{ duration: 16, repeat: Infinity, ease: 'linear' }}
-              >
-                <div className="absolute bottom-0 right-2 w-2 h-2 rounded-full bg-accent/60" />
-              </motion.div>
+              {/* Ambient backlight glow */}
+              <div className="absolute -inset-4 bg-gradient-to-tr from-accent/20 via-accent/5 to-transparent rounded-3xl blur-2xl -z-10" />
 
-              {/* Center orb */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <motion.div
-                  className="w-32 h-32 rounded-full bg-gradient-to-br from-accent/20 to-accent/5 border border-accent/25 flex items-center justify-center backdrop-blur-sm"
-                  animate={{ scale: [1, 1.04, 1] }}
-                  transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-                >
-                  <div className="w-20 h-20 rounded-full bg-gradient-to-br from-accent/30 to-transparent flex items-center justify-center">
-                    <span className="text-3xl font-bold font-mono text-accent tracking-tight">AI</span>
+              {/* Rotating outer orbital accent */}
+              <motion.div
+                className="absolute -inset-6 rounded-3xl border border-accent/20 pointer-events-none -z-10"
+                animate={{ rotate: [0, 3, 0, -3, 0] }}
+                transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
+              />
+
+              {/* Main Portrait Card */}
+              <div className="relative rounded-3xl p-2 bg-gradient-to-b from-bg-secondary via-bg-secondary to-bg-primary border border-border/80 shadow-2xl shadow-black/60 overflow-hidden group">
+                <div className="relative rounded-2xl overflow-hidden aspect-[4/5] bg-bg-secondary">
+                  <img
+                    src="/profile.jpg"
+                    alt="Obaid Ullah - Full-Stack & AI Developer"
+                    className="w-full h-full object-cover object-top filter brightness-95 group-hover:scale-105 transition-transform duration-700 ease-out"
+                  />
+                  {/* Subtle bottom gradient overlay for smooth visual blending */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-bg-primary/80 via-transparent to-transparent pointer-events-none" />
+
+                  {/* Corner tech accent */}
+                  <div className="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-bg-primary/80 backdrop-blur-md border border-border/60 text-[10px] font-mono text-text-secondary flex items-center gap-1.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
+                    Obaid Ullah
                   </div>
-                </motion.div>
+                </div>
               </div>
 
-              {/* Floating label nodes */}
-              {[
-                { style: 'top-4 left-4', label: 'LLM', delay: 0 },
-                { style: 'top-4 right-4', label: 'API', delay: 0.6 },
-                { style: 'bottom-4 right-4', label: 'ML', delay: 1.2 },
-                { style: 'bottom-4 left-4', label: 'NLP', delay: 1.8 },
-              ].map((node) => (
-                <motion.div
-                  key={node.label}
-                  className={`absolute ${node.style}`}
-                  animate={{ y: [0, -5, 0] }}
-                  transition={{ duration: 3.5, delay: node.delay, repeat: Infinity, ease: 'easeInOut' }}
-                >
-                  <div className="w-11 h-11 rounded-xl bg-bg-secondary border border-accent/25 flex items-center justify-center shadow-lg">
-                    <span className="text-xs font-mono text-accent font-bold">{node.label}</span>
-                  </div>
-                </motion.div>
-              ))}
+              {/* Floating Badge 1: Top Right - Agentic AI */}
+              <motion.div
+                className="absolute -top-4 -right-4 card !p-3 !bg-bg-secondary/90 backdrop-blur-md border border-accent/30 shadow-xl flex items-center gap-2.5"
+                animate={{ y: [0, -6, 0] }}
+                transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+              >
+                <div className="w-8 h-8 rounded-lg bg-accent/15 border border-accent/30 flex items-center justify-center text-accent">
+                  <Cpu size={16} />
+                </div>
+                <div>
+                  <div className="text-[10px] text-text-secondary font-mono uppercase tracking-wider">Focus</div>
+                  <div className="text-xs font-semibold text-text-primary">Agentic AI</div>
+                </div>
+              </motion.div>
+
+              {/* Floating Badge 2: Bottom Left - Full-Stack */}
+              <motion.div
+                className="absolute -bottom-5 -left-5 card !p-3 !bg-bg-secondary/90 backdrop-blur-md border border-accent/30 shadow-xl flex items-center gap-2.5"
+                animate={{ y: [0, 6, 0] }}
+                transition={{ duration: 4.5, delay: 0.5, repeat: Infinity, ease: 'easeInOut' }}
+              >
+                <div className="w-8 h-8 rounded-lg bg-accent/15 border border-accent/30 flex items-center justify-center text-accent">
+                  <Terminal size={16} />
+                </div>
+                <div>
+                  <div className="text-[10px] text-text-secondary font-mono uppercase tracking-wider">Stack</div>
+                  <div className="text-xs font-semibold text-text-primary">Full-Stack Dev</div>
+                </div>
+              </motion.div>
+
+              {/* Floating Badge 3: Bottom Right - Modern Solutions */}
+              <motion.div
+                className="absolute bottom-12 -right-6 card !py-1.5 !px-3 !bg-bg-primary/90 backdrop-blur-md border border-border shadow-lg flex items-center gap-1.5"
+                animate={{ x: [0, 4, 0] }}
+                transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
+              >
+                <Sparkles size={12} className="text-accent" />
+                <span className="text-[11px] font-mono text-text-secondary">Python • LLMs</span>
+              </motion.div>
+
             </div>
-
-            {/* Floating info cards */}
-            <motion.div
-              className="absolute left-1/4 top-1/3 card py-2.5 px-3.5 !bg-bg-secondary/85 backdrop-blur-sm text-left pointer-events-none"
-              animate={{ y: [0, -5, 0] }}
-              transition={{ duration: 4.5, repeat: Infinity }}
-            >
-              <div className="text-xs text-text-secondary">Focus</div>
-              <div className="text-sm font-semibold text-text-primary">Agentic AI</div>
-            </motion.div>
-
-            <motion.div
-              className="absolute right-1/4 bottom-1/3 card py-2.5 px-3.5 !bg-bg-secondary/85 backdrop-blur-sm text-left pointer-events-none"
-              animate={{ y: [0, 5, 0] }}
-              transition={{ duration: 4.5, delay: 1.2, repeat: Infinity }}
-            >
-              <div className="text-xs text-text-secondary">Stack</div>
-              <div className="text-sm font-semibold text-text-primary">Full-Stack</div>
-            </motion.div>
           </motion.div>
+
         </div>
       </div>
 
@@ -213,4 +235,3 @@ export default function Hero() {
     </section>
   )
 }
-

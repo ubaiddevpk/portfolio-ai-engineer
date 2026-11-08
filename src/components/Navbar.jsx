@@ -45,8 +45,12 @@ export default function Navbar({ activeSection }) {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <div className="w-8 h-8 rounded-lg bg-accent flex items-center justify-center flex-shrink-0">
-              <span className="text-bg-primary font-bold text-xs font-mono">OU</span>
+            <div className="w-8 h-8 rounded-lg overflow-hidden border border-accent/40 bg-bg-secondary flex items-center justify-center flex-shrink-0 shadow-sm">
+              <img
+                src="/profile.jpg"
+                alt="Obaid Ullah"
+                className="w-full h-full object-cover object-top"
+              />
             </div>
             <span className="font-bold text-text-primary text-base hidden sm:block tracking-tight">
               Obaid Ullah

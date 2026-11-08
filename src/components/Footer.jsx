@@ -22,8 +22,12 @@ export default function Footer() {
           {/* Left: Identity */}
           <div className="text-center md:text-left">
             <div className="flex items-center gap-2 mb-2 justify-center md:justify-start">
-              <div className="w-7 h-7 rounded-lg bg-accent flex items-center justify-center">
-                <span className="text-bg-primary font-bold text-xs font-mono">OU</span>
+              <div className="w-7 h-7 rounded-lg overflow-hidden border border-accent/40 bg-bg-secondary flex items-center justify-center flex-shrink-0">
+                <img
+                  src="/profile.jpg"
+                  alt="Obaid Ullah"
+                  className="w-full h-full object-cover object-top"
+                />
               </div>
               <span className="font-bold text-text-primary">{personalInfo.name}</span>
             </div>

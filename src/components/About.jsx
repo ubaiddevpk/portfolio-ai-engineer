@@ -63,6 +63,27 @@ export default function About() {
             description="A developer passionate about technology, software engineering, and Artificial Intelligence."
           />
 
+          {/* Quick Profile Badge */}
+          <div className="flex items-center gap-3.5 mb-6 p-3 rounded-xl bg-bg-secondary/80 border border-border">
+            <div className="relative w-12 h-12 rounded-lg overflow-hidden border border-accent/40 flex-shrink-0 shadow-sm">
+              <img
+                src="/profile.jpg"
+                alt="Obaid Ullah"
+                className="w-full h-full object-cover object-top"
+              />
+            </div>
+            <div>
+              <div className="text-sm font-semibold text-text-primary">Obaid Ullah</div>
+              <div className="text-xs text-text-secondary font-mono">Full-Stack Developer · AI Specialist</div>
+            </div>
+            <div className="ml-auto pr-2">
+              <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-accent/10 border border-accent/20 text-[11px] font-mono text-accent">
+                <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
+                Active
+              </span>
+            </div>
+          </div>
+
           <div className="space-y-4 text-text-secondary text-sm leading-relaxed">
             <p>
               I&apos;m{' '}
